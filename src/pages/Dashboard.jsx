@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -21,14 +21,25 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 // import Chart from './Chart';
 // import Deposits from './Deposits';
 // import Orders from './Orders';
-
 import { cardData } from '../data/mockData';
+import { rows } from '../data/mockData';
+
 import Card from '../components/cards/Card';
+import MuiDataGrid from '../components/datatable/MuiDataGrid';
 
 import GroupIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-
 import Sidebar from '../layouts/Sidebar';
+
+// const fetchData = async () => {
+//     try {
+//         const response = await axios.get('./data/mockData.js');
+//         setRows(response.data);
+//     } catch (error) {
+//         console.error('Error fetching data:', error);
+//     }
+// }
+
 
 function Copyright(props) {
     return (
@@ -89,11 +100,54 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 );
 
+
+const columns = [
+    { field: 'id', headerName: 'ID', width: 90 },
+    {
+        field: 'firstName',
+        headerName: 'First name',
+        width: 150,
+        editable: true,
+    },
+    {
+        field: 'lastName',
+        headerName: 'Last name',
+        width: 150,
+        editable: true,
+    },
+    {
+        field: 'age',
+        headerName: 'Age',
+        type: 'number',
+        width: 110,
+        editable: true,
+    },
+    {
+        field: 'fullName',
+        headerName: 'Full name',
+        description: 'This column has a value getter and is not sortable.',
+        sortable: false,
+        width: 160,
+        valueGetter: (params) =>
+            `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+    },
+];
+
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Dashboard() {
-    const [open, setOpen] = React.useState(true);
+const Dashboard = () => {
+
+    const [dataRows, setDataRows] = useState([])
+    const [open, setOpen] = useState(true);
+
+    useEffect(() => {
+        // fetchData()
+        setDataRows(rows)
+        console.log(dataRows)
+    }, [])
+
+
     const toggleDrawer = () => {
         setOpen(!open);
     };
@@ -175,20 +229,7 @@ export default function Dashboard() {
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
-                            {/* Chart */}
-                            <Grid item xs={12} md={8} lg={6}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 240,
-                                    }}
-                                >
-                                    Chart here
-                                    {/* <Chart /> */}
-                                </Paper>
-                            </Grid>
+
 
                             {/* Dashboard Cards*/}
                             {cardData.map((data) => {
@@ -203,10 +244,29 @@ export default function Dashboard() {
                                 )
                             })}
 
-                            {/* Recent Orders */}
+                            {/* Chart */}
+                            <Grid item xs={12}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 240,
+                                    }}
+                                >
+                                    Chart here
+                                    {/* <Chart /> */}
+                                </Paper>
+                            </Grid>
+
+                            {/* DataGrid */}
                             <Grid item xs={12}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                                     {/* <Orders /> */}
+                                    {/* {dataRows.map(() => {
+                                        return()
+                                    })} */}
+                                    <MuiDataGrid columns={columns} rows={dataRows} />
                                 </Paper>
                             </Grid>
                         </Grid>
@@ -217,3 +277,5 @@ export default function Dashboard() {
         </ThemeProvider>
     );
 }
+
+export default Dashboard
