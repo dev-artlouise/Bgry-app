@@ -22,7 +22,7 @@ const BasicInfoForm = ({ handleNext }) => {
     const [religion, setReligion] = useState('');
     const [tribe, setTribe] = useState('');
 
-    const [error, setError] = useState('')
+    const [error, setError] = useState(false)
 
     return (
         <>
@@ -34,19 +34,19 @@ const BasicInfoForm = ({ handleNext }) => {
                     <>
                         <Grid item xs={4}>
                             <MuiTextField
-                                error={error && true}
                                 label='First Name'
                                 value={firstName}
                                 setData={setFirstName}
+                                error={error && true}
                             />
                         </Grid>
 
                         <Grid item xs={4}>
                             <MuiTextField
-                                error={error && true}
                                 label='Last Name'
                                 value={lastName}
                                 setData={setLastName}
+                                error={error && true}
                             />
                         </Grid>
 
@@ -60,11 +60,10 @@ const BasicInfoForm = ({ handleNext }) => {
 
                         <Grid item xs={4}>
                             <MuiDatePicker
-                                error={error && true}
                                 label='Date Of Birth'
                                 value={dateOfBirth}
                                 setData={setDateOfBirth}
-                                type='date'
+                                error={error && true}
                             />
                         </Grid>
 
@@ -88,7 +87,9 @@ const BasicInfoForm = ({ handleNext }) => {
                             <MuiTextField
                                 label='Civil Status'
                                 value={civilStatus}
+                                select={true}
                                 setData={setCivilStatus}
+                            // error={true}
                             />
                         </Grid>
 

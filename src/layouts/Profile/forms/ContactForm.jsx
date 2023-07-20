@@ -56,6 +56,7 @@ const ContactForm = ({ handleNext, handleBack }) => {
                             <MuiTextField
                                 label='Zone'
                                 value={zone}
+                                select={true}
                                 setData={setZone}
                             />
                         </Grid>

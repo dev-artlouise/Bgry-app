@@ -1,5 +1,4 @@
 import React from 'react'
-
 import BasicInfoForm from './forms/BasicInfoForm'
 import ContactForm from './forms/ContactForm'
 
