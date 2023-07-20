@@ -1,42 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-import { Box, Grid } from '@mui/material'
 
-import Form from '../layouts/Form'
-import MuiTextField from '../components/textfield/MuiTextField'
+import Stepper from '../layouts/Profile/Stepper';
 
 const ProfilePage = () => {
 
     //field Inputs
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
+    // Basic Information
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [middleName, setMiddleName] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState(null);
+    const [age, setAge] = useState('')
+    const [birthPlace, setBirthPlace] = useState('');
+    const [gender, setGender] = useState('');
+    const [civilStatus, setCivilStatus] = useState('');
+    const [religion, setReligion] = useState('');
+    const [tribe, setTribe] = useState('');
+
+    //Contact and Address Info
+    const [contactNumber, setContactNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [zone, setZone] = useState('');
+
     const [error, setError] = useState(false)
 
     return (
-        <div>
-            <Form
-                content={
-                    <>
-                        <Grid item xs={4}>
-                            <MuiTextField
-                                error={error && true}
-                                label='First Name'
-                                value={firstName}
-                                setData={setFirstName}
-                            />
-                        </Grid>
-
-                        <Grid item xs={4}>
-                            <MuiTextField
-                                label='Last Name'
-                                value={lastName}
-                                setData={setLastName}
-                            />
-                        </Grid>
-                    </>
-                }
-            />
-        </div>
+        <Stepper />
     )
 }
 
