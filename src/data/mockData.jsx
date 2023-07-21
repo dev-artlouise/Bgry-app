@@ -92,3 +92,73 @@ export const rows = [
         age: 65
     }
 ];
+
+export const zones = [
+    {
+        id: 1,
+        label: 'Zone 1',
+        value: 'Zone 1',
+    },
+    {
+        id: 2,
+        label: 'Zone 2',
+        value: 'Zone 2',
+    },
+    {
+        id: 3,
+        label: 'Zone 3',
+        value: 'Zone 3',
+    },
+    {
+        id: 4,
+        label: 'Zone 4',
+        value: 'Zone 4',
+    },
+    {
+        id: 5,
+        label: 'Zone 5',
+        value: 'Zone 5',
+    },
+    {
+        id: 6,
+        label: 'Zone 6',
+        value: 'Zone 6',
+    },
+    {
+        id: 7,
+        label: 'Zone 7',
+        value: 'Zone 7',
+    }
+];
+
+export const civilStatusData = [
+    {
+        id: 1,
+        label: 'Single',
+        value: 'single',
+    },
+    {
+        id: 2,
+        label: 'Married',
+        value: 'married',
+    },
+    {
+        id: 3,
+        label: 'Widow',
+        value: 'widow',
+    },
+    {
+        id: 4,
+        label: 'Separated',
+        value: 'separated',
+    },
+]
+
+
+
+// export const civilStatusData = [
+//     { id: 1, value: 'single', label: 'Single' },
+//     { id: 2, value: 'married', label: 'Married' },
+//     { id: 3, value: 'divorced', label: 'Divorced' },
+//     // Add more options as needed
+// ];

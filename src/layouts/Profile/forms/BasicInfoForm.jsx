@@ -1,12 +1,13 @@
 import { useState } from 'react'
 
-import { Box, Grid, useStepContext } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 import Form from '../../../components/form/Form';
 import MuiTextField from '../../../components/textfield/MuiTextField'
 import MuiDatePicker from '../../../components/dateField/MuiDatePicker';
 import MuiButton from '../../../components/button/MuiButton';
 
+import { civilStatusData } from '../../../data/mockData';
 
 const BasicInfoForm = ({ handleNext }) => {
 
@@ -18,7 +19,7 @@ const BasicInfoForm = ({ handleNext }) => {
     const [age, setAge] = useState('')
     const [birthPlace, setBirthPlace] = useState('');
     const [gender, setGender] = useState('');
-    const [civilStatus, setCivilStatus] = useState('');
+    const [civilStatus, setCivilStatus] = useState('single');
     const [religion, setReligion] = useState('');
     const [tribe, setTribe] = useState('');
 
@@ -83,14 +84,18 @@ const BasicInfoForm = ({ handleNext }) => {
                             />
                         </Grid>
 
+                        {/* Select Component */}
                         <Grid item xs={4}>
-                            <MuiTextField
-                                label='Civil Status'
-                                value={civilStatus}
-                                select={true}
-                                setData={setCivilStatus}
-                            // error={true}
-                            />
+                            {civilStatusData.length > 0 && ( // Add this condition
+                                <MuiTextField
+                                    label='Civil Status'
+                                    value={civilStatus}
+                                    select={true}
+                                    setData={setCivilStatus}
+                                    error={error && true}
+                                    options={civilStatusData}
+                                />
+                            )}
                         </Grid>
 
                         <Grid item xs={4}>

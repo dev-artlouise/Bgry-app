@@ -19,7 +19,7 @@ const MuiDatePicker = ({ label, value, setData, error }) => {
                 value={value}
                 onChange={handleDateChange}
                 error={hasError}
-                renderInput={(params) => <TextField {...params} />}
+                slotProps={{ textField: { variant: 'outlined' } }}
             />
         </LocalizationProvider>
     );
