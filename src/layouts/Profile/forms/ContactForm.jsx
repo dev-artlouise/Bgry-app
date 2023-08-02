@@ -1,18 +1,20 @@
 import { useState } from 'react'
 
-import { Box, Grid, useStepContext } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 import Form from '../../../components/form/Form';
 import MuiTextField from '../../../components/textfield/MuiTextField'
 import MuiDatePicker from '../../../components/dateField/MuiDatePicker';
 import MuiButton from '../../../components/button/MuiButton';
 
+import { civilStatusData, zonesData } from '../../../data/mockData';
+
 const ContactForm = ({ handleNext, handleBack }) => {
 
     // Basic Information Fields
     const [contactNumber, setContactNumber] = useState('');
     const [address, setAddress] = useState('');
-    const [zone, setZone] = useState('');
+    const [zone, setZone] = useState('Zone 1');
     const [email, setEmail] = useState('');
 
     const [error, setError] = useState('')
@@ -25,7 +27,7 @@ const ContactForm = ({ handleNext, handleBack }) => {
 
                 content={
                     <>
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 error={error && true}
                                 label='Contact Number'
@@ -34,7 +36,7 @@ const ContactForm = ({ handleNext, handleBack }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 error={error && true}
                                 label='Email Address'
@@ -43,7 +45,7 @@ const ContactForm = ({ handleNext, handleBack }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 error={error && true}
                                 label='Address'
@@ -52,28 +54,16 @@ const ContactForm = ({ handleNext, handleBack }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
-                            <MuiTextField
-                                label='Zone'
-                                value={zone}
-                                setData={setZone}
-                            />
-                        </Grid>
-
                         <Grid item xs={12}>
-                            <MuiButton
-                                label='Back'
-                                variant='outlined'
-                                color='primary'
-                                onClick={handleBack}
-                            />
-
-                            <MuiButton
-                                label='Next'
-                                variant='contained'
-                                color='primary'
-                                onClick={handleNext}
-                            />
+                            {civilStatusData.length > 0 && (
+                                <MuiTextField
+                                    label='Zone'
+                                    value={zone}
+                                    select={true}
+                                    setData={setZone}
+                                    options={zonesData}
+                                />
+                            )}
                         </Grid>
                     </>
                 }
