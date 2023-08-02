@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-
-
-import Stepper from '../layouts/Profile/Stepper';
+import ProfileStepper from '../layouts/Profile/ProfileStepper';
 
 const ProfilePage = () => {
     const [error, setError] = useState(false)
 
     return (
-        <Stepper />
+        <ProfileStepper />
     )
 }
 

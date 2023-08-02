@@ -10,10 +10,10 @@ const MuiTextField = ({
     error,
     type,
     select,
-    options = []
+    options = [],
 }) => {
 
-    console.log('Options:', options); // Add this line to check the options prop
+    // console.log('Options:', options); // Add this line to check the options prop
     // ... rest of the component
 
     const [hasError, setHasError] = useState(!!error);
@@ -33,6 +33,7 @@ const MuiTextField = ({
     return (
         <FormControl sx={{ width: '100%' }}>
             <TextField
+                required
                 select={select}
                 type={type}
                 // error={hasError}

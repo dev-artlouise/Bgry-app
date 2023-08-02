@@ -93,7 +93,7 @@ export const rows = [
     }
 ];
 
-export const zones = [
+export const zonesData = [
     {
         id: 1,
         label: 'Zone 1',

@@ -33,16 +33,17 @@ const BasicInfoForm = ({ handleNext }) => {
 
                 content={
                     <>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6}>
                             <MuiTextField
                                 label='First Name'
                                 value={firstName}
                                 setData={setFirstName}
                                 error={error && true}
+
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={6}>
                             <MuiTextField
                                 label='Last Name'
                                 value={lastName}
@@ -51,7 +52,7 @@ const BasicInfoForm = ({ handleNext }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 label='Middle Name'
                                 value={middleName}
@@ -59,7 +60,7 @@ const BasicInfoForm = ({ handleNext }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                             <MuiDatePicker
                                 label='Date Of Birth'
                                 value={dateOfBirth}
@@ -68,7 +69,7 @@ const BasicInfoForm = ({ handleNext }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                             <MuiTextField
                                 label='Age'
                                 value={age}
@@ -76,7 +77,7 @@ const BasicInfoForm = ({ handleNext }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 label='BirthPlace'
                                 value={birthPlace}
@@ -85,7 +86,7 @@ const BasicInfoForm = ({ handleNext }) => {
                         </Grid>
 
                         {/* Select Component */}
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             {civilStatusData.length > 0 && ( // Add this condition
                                 <MuiTextField
                                     label='Civil Status'
@@ -98,7 +99,7 @@ const BasicInfoForm = ({ handleNext }) => {
                             )}
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 label='Religion'
                                 value={religion}
@@ -106,20 +107,11 @@ const BasicInfoForm = ({ handleNext }) => {
                             />
                         </Grid>
 
-                        <Grid item xs={4}>
+                        <Grid item xs={12}>
                             <MuiTextField
                                 label='Tribe'
                                 value={tribe}
                                 setData={setTribe}
-                            />
-                        </Grid>
-
-                        <Grid item>
-                            <MuiButton
-                                label='Next'
-                                variant='contained'
-                                color='primary'
-                                onClick={handleNext}
                             />
                         </Grid>
                     </>
