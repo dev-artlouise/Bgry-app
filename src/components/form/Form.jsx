@@ -5,15 +5,13 @@ const Form = ({ content, title }) => {
     return (
         <>
             <Box mt={1}>
-                <form action="">
-                    <Typography variant="h6" gutterBottom>
-                        {title}
-                    </Typography>
+                <Typography variant="h6" gutterBottom>
+                    {title}
+                </Typography>
 
-                    <Grid container spacing={3}>
-                        {content}
-                    </Grid>
-                </form>
+                <Grid container spacing={3}>
+                    {content}
+                </Grid>
             </Box>
 
         </>

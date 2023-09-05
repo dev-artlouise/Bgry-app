@@ -10,6 +10,7 @@ const MuiTextField = ({
     error,
     type,
     select,
+    disabled = false,
     options = [],
 }) => {
 
@@ -24,12 +25,6 @@ const MuiTextField = ({
     }, [error]);
 
     // const [hasError, setHasError] = useState(!!error)
-
-    const handleChange = (event) => {
-        setData(event.target.value);
-        setHasError(!!error);
-    };
-
     return (
         <FormControl sx={{ width: '100%' }}>
             <TextField
@@ -39,7 +34,8 @@ const MuiTextField = ({
                 // error={hasError}
                 label={label}
                 value={value}
-                onChange={handleChange}
+                onChange={setData}
+                disabled={disabled}
                 variant="outlined"
             >
                 {options?.map((option) => (

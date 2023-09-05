@@ -9,19 +9,7 @@ import MuiButton from '../../../components/button/MuiButton';
 
 import { civilStatusData } from '../../../data/mockData';
 
-const BasicInfoForm = ({ handleNext }) => {
-
-    // Basic Information Fields
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [middleName, setMiddleName] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState(null);
-    const [age, setAge] = useState('')
-    const [birthPlace, setBirthPlace] = useState('');
-    const [gender, setGender] = useState('');
-    const [civilStatus, setCivilStatus] = useState('single');
-    const [religion, setReligion] = useState('');
-    const [tribe, setTribe] = useState('');
+const BasicInfoForm = ({ handleChange, data, setData }) => {
 
     const [error, setError] = useState(false)
 
@@ -36,18 +24,18 @@ const BasicInfoForm = ({ handleNext }) => {
                         <Grid item xs={12} md={6}>
                             <MuiTextField
                                 label='First Name'
-                                value={firstName}
-                                setData={setFirstName}
+                                value={data.firstName}
+                                setData={e => handleChange('firstName', e.target.value)}
                                 error={error && true}
-
                             />
+                            {/* {data.firstName} */}
                         </Grid>
 
                         <Grid item xs={12} md={6}>
                             <MuiTextField
                                 label='Last Name'
-                                value={lastName}
-                                setData={setLastName}
+                                value={data.lastName}
+                                setData={e => handleChange('lastName', e.target.value)}
                                 error={error && true}
                             />
                         </Grid>
@@ -55,33 +43,35 @@ const BasicInfoForm = ({ handleNext }) => {
                         <Grid item xs={12}>
                             <MuiTextField
                                 label='Middle Name'
-                                value={middleName}
-                                setData={setMiddleName}
+                                value={setData.setMiddleName}
+                                setData={e => handleChange('middleName', e.target.value)}
                             />
                         </Grid>
 
-                        <Grid item xs={6}>
+                        {/* <Grid item xs={6}>
                             <MuiDatePicker
                                 label='Date Of Birth'
-                                value={dateOfBirth}
-                                setData={setDateOfBirth}
+                                value={data.dateOfBirth}
+                                setData={setData.setDateOfBirth}
                                 error={error && true}
                             />
-                        </Grid>
+                        </Grid> */}
 
                         <Grid item xs={6}>
                             <MuiTextField
                                 label='Age'
-                                value={age}
-                                setData={setAge}
+                                value={data.age}
+                                setData={e => handleChange('age', e.target.value)}
+                                disabled={true}
+
                             />
                         </Grid>
 
                         <Grid item xs={12}>
                             <MuiTextField
                                 label='BirthPlace'
-                                value={birthPlace}
-                                setData={setBirthPlace}
+                                value={data.birthPlace}
+                                setData={e => handleChange('birthPlace', e.target.value)}
                             />
                         </Grid>
 
@@ -90,9 +80,9 @@ const BasicInfoForm = ({ handleNext }) => {
                             {civilStatusData.length > 0 && ( // Add this condition
                                 <MuiTextField
                                     label='Civil Status'
-                                    value={civilStatus}
+                                    value={data.civilStatus}
                                     select={true}
-                                    setData={setCivilStatus}
+                                    setData={setData.civilStatus}
                                     error={error && true}
                                     options={civilStatusData}
                                 />
@@ -102,16 +92,16 @@ const BasicInfoForm = ({ handleNext }) => {
                         <Grid item xs={12}>
                             <MuiTextField
                                 label='Religion'
-                                value={religion}
-                                setData={setReligion}
+                                value={data.religion}
+                                setData={e => handleChange('religion', e.target.value)}
                             />
                         </Grid>
 
                         <Grid item xs={12}>
                             <MuiTextField
                                 label='Tribe'
-                                value={tribe}
-                                setData={setTribe}
+                                value={data.tribe}
+                                setData={e => handleChange('tribe', e.target.value)}
                             />
                         </Grid>
                     </>
